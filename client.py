@@ -9,9 +9,9 @@ camera = False
 if camera == True:
 	vid = cv2.VideoCapture(0)
 else:
-	vid = cv2.VideoCapture('Videos/corima_test_2.mp4')
+	vid = cv2.VideoCapture('/home/dikshant/Videos/sample.mp4')
 client_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host_ip = '192.168.1.11' # Here according to your server ip write the address
+host_ip = '172.25.32.1' # Here according to your server ip write the address
 
 port = 9999
 client_socket.connect((host_ip,port))
