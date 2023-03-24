@@ -1,11 +1,6 @@
-
-# Welcome to PyShine
-# lets make the client code
-# In this code client is sending video to server
 import socket,cv2, pickle,struct
-import pyshine as ps # pip install pyshine
-import imutils # pip install imutils
-camera = False
+import imutils
+camera = True
 if camera == True:
 	vid = cv2.VideoCapture(0)
 else:
