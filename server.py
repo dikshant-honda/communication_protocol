@@ -5,7 +5,7 @@ import cv2
 
 server_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 host_name  = socket.gethostname()
-host_ip = '172.20.10.12'
+host_ip = '192.168.30.139'
 print('HOST IP:',host_ip)
 port = 9999
 socket_address = (host_ip,port)
@@ -22,7 +22,8 @@ def show_client(addr,client_socket):
 			while True:
 				while len(data) < payload_size:
 					packet = client_socket.recv(4*1024)
-					if not packet: break
+					if not packet: 
+						raise RuntimeError("socket connection broken")
 					data+=packet
 				packed_msg_size = data[:payload_size]
 				data = data[payload_size:]
