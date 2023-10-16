@@ -8,7 +8,7 @@ import cv2
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host_name = socket.gethostname()
-host_ip = '192.168.30.139'
+host_ip = '192.168.30.194'
 print('HOST IP:', host_ip)
 port = 9999
 socket_address = (host_ip, port)
