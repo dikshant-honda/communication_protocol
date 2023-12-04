@@ -4,12 +4,12 @@ import math
 import pickle
 
 max_length = 65000
-host = '192.168.55.1'
-port = 5000
+host = '192.168.11.31'
+port = 12345
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-camera = False
+camera = True
 if camera == True:
     cap = cv2.VideoCapture(0)
 else:
