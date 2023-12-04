@@ -34,7 +34,7 @@ while ret:
         frame_info = {"packs":num_of_packs}
 
         # send the number of packs to be expected
-        print("Number of packs:", num_of_packs)
+        # print("Number of packs:", num_of_packs)
         sock.sendto(pickle.dumps(frame_info), (host, port))
         
         left = 0
