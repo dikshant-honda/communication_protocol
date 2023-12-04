@@ -10,7 +10,7 @@ if camera == True:
 else:
     vid = cv2.VideoCapture('/home/dikshant/Videos/Leeds.mp4')
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-host_ip = '192.168.30.80'  # Here according to your server ip write the address
+host_ip = '192.168.11.31'  # Here according to your server ip write the address
 
 port = 12345
 client_socket.connect((host_ip, port))
