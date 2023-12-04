@@ -5,6 +5,7 @@ import struct
 import threading
 import pyshine as ps
 import cv2
+import timeit
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host_name = socket.gethostname()
@@ -20,21 +21,27 @@ print("Listening at", socket_address)
 def show_client(addr, client_socket):
     try:
         print('CLIENT {} CONNECTED!'.format(addr))
+        
         if client_socket:
             data = b""
             payload_size = struct.calcsize("Q")
             while True:
+                start = timeit.default_timer()
                 while len(data) < payload_size:
                     packet = client_socket.recv(4*1024)
                     if not packet:
                         raise RuntimeError("socket connection broken")
                     data += packet
+
                 packed_msg_size = data[:payload_size]
                 data = data[payload_size:]
                 msg_size = struct.unpack("Q", packed_msg_size)[0]
 
                 while len(data) < msg_size:
                     data += client_socket.recv(4*1024)
+
+                print("time taken ", timeit.default_timer() - start, " seconds")
+                
                 frame_data = data[:msg_size]
                 data = data[msg_size:]
                 frame = pickle.loads(frame_data)

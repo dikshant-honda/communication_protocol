@@ -2,6 +2,7 @@ import cv2
 import socket
 import pickle
 import numpy as np
+import timeit
 
 host = "0.0.0.0"
 port = 12345
@@ -17,7 +18,9 @@ frame = None
 print("-> waiting for connection")
 
 while True:
+    start = timeit.default_timer()
     data, address = sock.recvfrom(max_length)
+    print("time taken: ", timeit.default_timer()-start, " seconds")
     
     if len(data) < 100:
         frame_info = pickle.loads(data)
@@ -37,7 +40,7 @@ while True:
             frame = frame.reshape(frame.shape[0], 1)
 
             frame = cv2.imdecode(frame, cv2.IMREAD_COLOR)
-            frame = cv2.flip(frame, 1)
+            # frame = cv2.flip(frame, 1)
             
             if frame is not None and type(frame) == np.ndarray:
                 cv2.imshow("Stream", frame)
