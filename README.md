@@ -71,18 +71,20 @@ catkin_make
 
    b. if camera is attached then set the camera variable in _line 12_ `camera = True`, else add video path to be processed in _line 16_
 
-5. connect both PCs to same network
+5. connect both PCs to same network (require two PCs: a. **server** (PC in control room), b. **client** (PC to which camera is attached)
 
 6. run the process:
 
    
    a. on server side:
 
-        python udp_server.py
+         cd ~/catkin_ws/src/communication_protocol/src/communication_protocol/
+         python udp_server.py
  
     b. on client side:
     
-        python udp_client.py
+         cd ~/catkin_ws/src/communication_protocol/src/communication_protocol/
+         python udp_client.py
 
 -------------------------------------------------------------------------------------------------------
 
